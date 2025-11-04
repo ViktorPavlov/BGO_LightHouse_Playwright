@@ -1,0 +1,111 @@
+{
+  "coreMetrics": {
+    "performance": {
+      "description": "Overall performance score",
+      "unit": "%",
+      "higherIsBetter": true
+    },
+    "firstContentfulPaint": {
+      "description": "First Contentful Paint",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "largestContentfulPaint": {
+      "description": "Largest Contentful Paint",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "totalBlockingTime": {
+      "description": "Total Blocking Time",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "cumulativeLayoutShift": {
+      "description": "Cumulative Layout Shift",
+      "unit": "",
+      "higherIsBetter": false
+    },
+    "speedIndex": {
+      "description": "Speed Index",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "timeToInteractive": {
+      "description": "Time to Interactive",
+      "unit": "ms",
+      "higherIsBetter": false
+    }
+  },
+  "additionalMetrics": {
+    "accessibility": {
+      "description": "Accessibility score",
+      "unit": "%",
+      "higherIsBetter": true
+    },
+    "bestPractices": {
+      "description": "Best Practices score",
+      "unit": "%",
+      "higherIsBetter": true
+    },
+    "seo": {
+      "description": "SEO score",
+      "unit": "%",
+      "higherIsBetter": true
+    },
+    "pwa": {
+      "description": "PWA score",
+      "unit": "%",
+      "higherIsBetter": true
+    },
+    "firstMeaningfulPaint": {
+      "description": "First Meaningful Paint",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "maxPotentialFID": {
+      "description": "Max Potential First Input Delay",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "totalByteWeight": {
+      "description": "Total Byte Weight",
+      "unit": "bytes",
+      "higherIsBetter": false
+    },
+    "serverResponseTime": {
+      "description": "Server Response Time",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "mainThreadWorkTime": {
+      "description": "Main Thread Work Time",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "bootupTime": {
+      "description": "JavaScript Bootup Time",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "networkRequests": {
+      "description": "Number of Network Requests",
+      "unit": "count",
+      "higherIsBetter": false
+    },
+    "networkRTT": {
+      "description": "Network Round Trip Time",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "networkServerLatency": {
+      "description": "Network Server Latency",
+      "unit": "ms",
+      "higherIsBetter": false
+    },
+    "domSize": {
+      "description": "DOM Size",
+      "unit": "elements",
+      "higherIsBetter": false
+    }
+  }
+}

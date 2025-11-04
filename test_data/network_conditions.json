@@ -1,0 +1,22 @@
+{ "networkConditions":
+    [
+        { 
+          "name": "4G", 
+          "rttMs": 170, 
+          "throughputKbps": 9000,
+          "description": "Good 4G connection"
+        },
+        { 
+          "name": "3G", 
+          "rttMs": 300, 
+          "throughputKbps": 1600,
+          "description": "Average 3G connection"
+        },
+        { 
+          "name": "Slow-3G", 
+          "rttMs": 400, 
+          "throughputKbps": 400,
+          "description": "Slow 3G connection"
+        }
+      ]
+}

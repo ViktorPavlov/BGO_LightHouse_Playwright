@@ -1,0 +1,49 @@
+{
+    "performanceBudgets":{
+        "first-contentful-paint": 1800,
+        "largest-contentful-paint": 2500,
+        "cumulative-layout-shift": 0.1,
+        "total-blocking-time": 300,
+        "speed-index": 3000,
+        "interactive": 3500,
+        "performance": 40,
+        "accessibility": 70,
+        "best-practices": 80,
+        "seo": 70,
+        "pwa": 25
+    },
+    "performance_analysis":{
+        "performance": 10,
+        "accessibility": 80,
+        "best-practices": 100,
+        "seo": 70,
+        "pwa": 20
+    },
+    "seo_budgets":{
+        "seo-score": 75,
+        "document-title": 1,
+        "meta-description": 1,
+        "viewport": 1,
+        "link-text": 0.8,
+        "image-alt": 0.9,
+        "is-crawlable": 1,
+        "robots-txt": 1,
+        "http-status-code": 1
+    },
+    "accessibility_budgets":{
+        "accessibility-score": 80,
+        "image-alt": 1,
+        "color-contrast": 1,
+        "aria-allowed-attr": 1,
+        "aria-required-attr": 1,
+        "aria-roles": 1,
+        "label": 1,
+        "document-title": 1,
+        "html-has-lang": 1,
+        "tabindex": 1,
+        "video-caption": 1,
+        "keyboard-nav-score": 0.9,
+        "screen-reader-score": 0.9,
+        "focus-visible": 0.9
+    }
+}
