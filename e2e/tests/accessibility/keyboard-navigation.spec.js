@@ -34,12 +34,13 @@ const {
   createReportsDirectory, 
   navigateWithRetry 
 } = require('../../helpers/test-helpers');
+const { generateHtmlReport } = require('../../helpers/report-generator');
 
 // Load test configuration
 const { pagesToTest } = loadTestConfig();
 
 // Create reports directory
-const reportsDirectory = createReportsDirectory('accessibility/keyboard');
+const reportsDirectory = createReportsDirectory('accessibility', 'keyboard');
 
 // Test each page
 for (const pageConfig of pagesToTest) {
@@ -104,6 +105,7 @@ for (const pageConfig of pagesToTest) {
     let previousElement = null;
     let potentialKeyboardTrap = false;
     let consecutiveSameElementCount = 0;
+    let keyboardTrapElement = null;
     const maxTabPresses = Math.min(interactiveElements.length * 2, 100); // Safety limit
     
     for (let i = 0; i < maxTabPresses; i++) {
@@ -132,7 +134,68 @@ for (const pageConfig of pagesToTest) {
           consecutiveSameElementCount++;
           if (consecutiveSameElementCount > 3) {
             potentialKeyboardTrap = true;
+            keyboardTrapElement = focusedElement;
+            
+            // Get more detailed selector for the trapped element
+            const trapElementDetails = await page.evaluate(() => {
+              const active = document.activeElement;
+              if (!active || active === document.body) return null;
+              
+              // Try to get a CSS selector for the element
+              let selector = '';
+              
+              // Add tag
+              selector += active.tagName.toLowerCase();
+              
+              // Add id if available
+              if (active.id) {
+                selector += `#${active.id}`;
+              }
+              
+              // Add some classes if available
+              if (active.className && typeof active.className === 'string') {
+                const classes = active.className.split(' ')
+                  .filter(c => c.trim() !== '')
+                  .slice(0, 2); // Take at most 2 classes to keep selector reasonable
+                
+                if (classes.length > 0) {
+                  selector += '.' + classes.join('.');
+                }
+              }
+              
+              // Try to get parent context
+              let parent = active.parentElement;
+              let parentInfo = '';
+              if (parent) {
+                parentInfo = parent.tagName.toLowerCase();
+                if (parent.id) parentInfo += `#${parent.id}`;
+              }
+              
+              // Get computed styles that might be relevant
+              const styles = window.getComputedStyle(active);
+              const position = styles.position;
+              const display = styles.display;
+              const visibility = styles.visibility;
+              
+              return {
+                selector,
+                parentInfo,
+                position,
+                display,
+                visibility,
+                outerHTML: active.outerHTML.substring(0, 300) // Limit length
+              };
+            });
+            
             console.warn('Potential keyboard trap detected!');
+            console.warn(`Trapped element: ${focusedElement.tagName}${focusedElement.id ? '#'+focusedElement.id : ''}`);
+            if (trapElementDetails) {
+              console.warn(`Selector: ${trapElementDetails.selector}`);
+              console.warn(`Parent: ${trapElementDetails.parentInfo}`);
+              console.warn(`CSS properties: position=${trapElementDetails.position}, display=${trapElementDetails.display}`);
+              console.warn(`Element HTML: ${trapElementDetails.outerHTML}`);
+            }
+            
             break;
           }
         } else {
@@ -215,6 +278,7 @@ for (const pageConfig of pagesToTest) {
       interactiveElementsCount: interactiveElements.length,
       focusableElementsCount: focusedElements.length,
       potentialKeyboardTrap,
+      keyboardTrapElement: keyboardTrapElement,
       hasSkipLinks,
       focusVisibilityResults,
       recommendations: []
@@ -230,10 +294,14 @@ for (const pageConfig of pagesToTest) {
     }
     
     if (potentialKeyboardTrap) {
+      const trapElementInfo = keyboardTrapElement ? 
+        `Element: ${keyboardTrapElement.tagName}${keyboardTrapElement.id ? ' #'+keyboardTrapElement.id : ''}${keyboardTrapElement.className ? ' .'+keyboardTrapElement.className.replace(/ /g, '.') : ''}` : 
+        '';
+      
       report.recommendations.push({
         priority: 'high',
         title: 'Fix keyboard trap',
-        description: 'A potential keyboard trap was detected. Ensure users can navigate away from all components using only a keyboard.'
+        description: `A potential keyboard trap was detected. ${trapElementInfo} Ensure users can navigate away from all components using only a keyboard.`
       });
     }
     
@@ -254,9 +322,12 @@ for (const pageConfig of pagesToTest) {
       });
     }
     
-    // Save report
+    // Save JSON report
     const reportPath = path.join(reportsDirectory, `${pageConfig.name}-keyboard-navigation.json`);
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+    
+    // Generate HTML report
+    generateHtmlReport(report, reportPath, 'keyboard');
     
     // Log results
     console.log(`\nKeyboard Navigation Results for ${pageConfig.name}:`);

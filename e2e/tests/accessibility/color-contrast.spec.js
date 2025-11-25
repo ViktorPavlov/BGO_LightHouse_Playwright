@@ -35,12 +35,14 @@ const {
   createReportsDirectory, 
   navigateWithRetry 
 } = require('../../helpers/test-helpers');
+const { generateHtmlReport } = require('../../helpers/report-generator');
+const { saveAuditReport } = require('../../helpers/accessibility-helpers');
 
 // Load test configuration
 const { pagesToTest } = loadTestConfig();
 
 // Create reports directory
-const reportsDirectory = createReportsDirectory('accessibility/contrast');
+const reportsDirectory = createReportsDirectory('accessibility', 'contrast');
 
 /**
  * Calculate the relative luminance of an RGB color
@@ -309,9 +311,22 @@ for (const pageConfig of pagesToTest) {
       });
     }
     
-    // Save report
+    // Save detailed color contrast report
     const reportPath = path.join(reportsDirectory, `${pageConfig.name}-color-contrast.json`);
-    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+    const reportData = {
+      url: pageConfig.url,
+      timestamp: new Date().toISOString(),
+      contrastScore: stats.passesAA / stats.total * 100,
+      stats: stats,
+      failingElements: report.failingElements,
+      recommendations: report.recommendations
+    };
+    
+    // Save report using the same function as accessibility-audit.spec.js
+    saveAuditReport(reportPath, reportData);
+    
+    // Generate HTML report
+    generateHtmlReport(reportData, reportPath, 'contrast');
     
     // Log results
     console.log(`\nColor Contrast Results for ${pageConfig.name}:`);

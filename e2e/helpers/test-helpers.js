@@ -38,12 +38,28 @@ function loadTestConfig() {
  * Create reports directory if it doesn't exist
  * 
  * @param {string} category - Report category (e.g., 'seo', 'performance')
+ * @param {string} [subcategory] - Report subcategory (e.g., 'keyboard', 'contrast')
  * @returns {string} - Path to the reports directory
  */
-function createReportsDirectory(category) {
+function createReportsDirectory(category, subcategory) {
   const basePath = path.join(__dirname, '..', '..', 'lighthouse-reports');
-  const categoryPath = category ? path.join(basePath, category) : basePath;
   
+  // Special handling for accessibility reports to ensure they all go to lighthouse-reports/accessibility
+  if (category.includes('accessibility') || category === 'accessibility') {
+    // Extract the subcategory if it's part of the category string (e.g., 'accessibility/keyboard')
+    const parts = category.split('/');
+    const accessibilityPath = path.join(basePath, 'accessibility');
+    
+    // If subcategory is provided directly or as part of the category string
+    const actualSubcategory = subcategory || (parts.length > 1 ? parts[1] : '');
+    
+    // Create the final path
+    const finalPath = actualSubcategory ? path.join(accessibilityPath, actualSubcategory) : accessibilityPath;
+    return ensureReportsDirectory(finalPath);
+  }
+  
+  // Standard handling for non-accessibility reports
+  const categoryPath = category ? path.join(basePath, category) : basePath;
   return ensureReportsDirectory(categoryPath);
 }
 

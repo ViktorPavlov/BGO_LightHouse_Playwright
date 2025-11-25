@@ -36,12 +36,13 @@ const {
   createReportsDirectory, 
   navigateWithRetry 
 } = require('../../helpers/test-helpers');
+const { generateHtmlReport } = require('../../helpers/report-generator');
 
 // Load test configuration
 const { performanceThresholds, accessibilityThresholds, pagesToTest } = loadTestConfig();
 
 // Create reports directory
-const reportsDirectory = createReportsDirectory('accessibility/comprehensive');
+const reportsDirectory = createReportsDirectory('accessibility', 'comprehensive');
 
 // Test each page
 for (const pageConfig of pagesToTest) {
@@ -140,6 +141,9 @@ for (const pageConfig of pagesToTest) {
       // Save comprehensive report
       const reportPath = path.join(reportsDirectory, `${pageConfig.name}-comprehensive.json`);
       saveAuditReport(reportPath, report);
+      
+      // Generate HTML report
+      generateHtmlReport(report, reportPath, 'comprehensive');
       
       // Log results
       console.log(`\nComprehensive Accessibility Results for ${pageConfig.name}:`);

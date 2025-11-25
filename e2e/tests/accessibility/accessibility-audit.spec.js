@@ -57,12 +57,13 @@ const {
   createReportsDirectory, 
   navigateWithRetry 
 } = require('../../helpers/test-helpers');
+const { generateHtmlReport } = require('../../helpers/report-generator');
 
 // Load test configuration
 const { performanceThresholds, accessibilityThresholds, pagesToTest } = loadTestConfig();
 
 // Create reports directory
-const reportsDirectory = createReportsDirectory('accessibility');
+const reportsDirectory = createReportsDirectory('accessibility', 'audit');
 
 // Test each page
 for (const pageConfig of pagesToTest) {
@@ -122,13 +123,17 @@ for (const pageConfig of pagesToTest) {
       
       // Save detailed accessibility report
       const reportPath = path.join(reportsDirectory, `${pageConfig.name}-accessibility-detailed.json`);
-      saveAuditReport(reportPath, {
+      const reportData = {
         url: pageConfig.url,
         timestamp: new Date().toISOString(),
         accessibilityScore: accessibilityMetrics['accessibility-score'],
         detailedMetrics: accessibilityMetrics,
         recommendations
-      });
+      };
+      saveAuditReport(reportPath, reportData);
+      
+      // Generate HTML report
+      generateHtmlReport(reportData, reportPath, 'audit');
       
       console.log(`\nDetailed accessibility report saved to: ${reportPath}`);
       

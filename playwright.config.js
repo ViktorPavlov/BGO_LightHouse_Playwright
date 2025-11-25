@@ -1,5 +1,7 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import path from 'path';
+import { createHtmlReporter } from './e2e/helpers/global-report-generator';
 
 /**
  * Read environment variables from file.
@@ -23,7 +25,12 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html'], // Default Playwright HTML reporter
+    ['list'], // Simple console reporter
+    ['json', { outputFile: path.join('lighthouse-reports', 'json', 'test-results.json') }], // JSON reporter
+    ['./e2e/helpers/global-report-generator.reporter.js'] // Custom HTML reporter for each spec file
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
