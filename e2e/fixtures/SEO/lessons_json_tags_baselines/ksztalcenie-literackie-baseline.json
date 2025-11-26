@@ -1,0 +1,57 @@
+{
+  "jsonLdData": [
+    {
+      "index": 0,
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "LearningResource",
+        "name": "Baśń - Bajka o rybaku i złotej rybce – analiza i przesłanie",
+        "description": ".",
+        "inLanguage": "pl",
+        "isAccessibleForFree": true,
+        "id": "https://eduboom.pl/jezyk-polski/4-primary-school/ksztalcenie-literackie/basn-bajka-o-rybaku-i-zlotej-rybce-analiza-i-przeslanie",
+        "educationalUse": "instruction",
+        "hasPart": [
+          {
+            "@type": "LearningResource",
+            "name": "Kim był Aleksander Puszkin?",
+            "url": "https://eduboom.pl/jezyk-polski/4-primary-school/ksztalcenie-literackie/basn-bajka-o-rybaku-i-zlotej-rybce-analiza-i-przeslanie/0199ec08-dc70-71b1-b89f-843168c8d8ec",
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Treść",
+            "url": "https://eduboom.pl/jezyk-polski/4-primary-school/ksztalcenie-literackie/basn-bajka-o-rybaku-i-zlotej-rybce-analiza-i-przeslanie/0199ec08-dc75-737f-bb45-18e3bdff5d6a",
+            "isAccessibleForFree": false
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Gatunek i kompozycja",
+            "url": "https://eduboom.pl/jezyk-polski/4-primary-school/ksztalcenie-literackie/basn-bajka-o-rybaku-i-zlotej-rybce-analiza-i-przeslanie/0199ec08-dc78-713c-88fe-675bfd4996f3",
+            "isAccessibleForFree": false
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Cechy baśni",
+            "url": "https://eduboom.pl/jezyk-polski/4-primary-school/ksztalcenie-literackie/basn-bajka-o-rybaku-i-zlotej-rybce-analiza-i-przeslanie/0199ec08-dc7b-73dd-b85d-5dfe82ff0e54",
+            "isAccessibleForFree": false
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Środki artystyczne",
+            "url": "https://eduboom.pl/jezyk-polski/4-primary-school/ksztalcenie-literackie/basn-bajka-o-rybaku-i-zlotej-rybce-analiza-i-przeslanie/0199ec08-dc7f-71d9-bd07-858405375be8",
+            "isAccessibleForFree": false
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Przesłanie utworu",
+            "url": "https://eduboom.pl/jezyk-polski/4-primary-school/ksztalcenie-literackie/basn-bajka-o-rybaku-i-zlotej-rybce-analiza-i-przeslanie/0199ec08-dc83-7367-bd93-11ca9e11dae0",
+            "isAccessibleForFree": false
+          }
+        ]
+      }
+    }
+  ],
+  "count": 1,
+  "lastUpdated": "2025-11-26T09:45:07.339Z"
+}

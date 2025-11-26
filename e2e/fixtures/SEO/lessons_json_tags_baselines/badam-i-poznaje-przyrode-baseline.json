@@ -1,0 +1,45 @@
+{
+  "jsonLdData": [
+    {
+      "index": 0,
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "LearningResource",
+        "name": "Pierwsza lekcja przyrody",
+        "description": "W tym wideo przeprowadzę cię przez czym zajmuje się przyroda i przyrodnik, pokażę źródła wiedzy przyrodniczej, przypomnę bezpieczeństwo w pracowni przyrodniczej i wyjaśnię oznaczenia substancji szkodliwych. Dowiesz się, jak biologia, geografia, chemia i fizyka pomagają rozumieć świat, gdzie szukać rzetelnych informacji, jak planować obserwacje i doświadczenia oraz jak rozpoznawać symbole ostrzegawcze, by pracować bezpiecznie. Włącz lekcję i odkrywaj przyrodę już teraz!",
+        "inLanguage": "pl",
+        "isAccessibleForFree": true,
+        "id": "https://eduboom.pl/przyroda/4-primary-school/badam-i-poznaje-przyrode/pierwsza-lekcja-przyrody",
+        "educationalUse": "instruction",
+        "hasPart": [
+          {
+            "@type": "LearningResource",
+            "name": "Czym zajmuje się przyroda i przyrodnik",
+            "url": "https://eduboom.pl/przyroda/4-primary-school/badam-i-poznaje-przyrode/pierwsza-lekcja-przyrody/01997ab0-8842-707c-8455-cbd886aee0c6",
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Źródła wiedzy przyrodniczej",
+            "url": "https://eduboom.pl/przyroda/4-primary-school/badam-i-poznaje-przyrode/pierwsza-lekcja-przyrody/01997ab0-8845-723c-a478-d54b8f62ce86",
+            "isAccessibleForFree": false
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Bezpieczeństwo w pracowni przyrodniczej",
+            "url": "https://eduboom.pl/przyroda/4-primary-school/badam-i-poznaje-przyrode/pierwsza-lekcja-przyrody/01997ab0-8848-71f5-be3e-0ed5a8d1bba7",
+            "isAccessibleForFree": false
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Oznaczenia substancji szkodliwych",
+            "url": "https://eduboom.pl/przyroda/4-primary-school/badam-i-poznaje-przyrode/pierwsza-lekcja-przyrody/01997ab0-884a-72d6-9149-716eb93e8f63",
+            "isAccessibleForFree": false
+          }
+        ]
+      }
+    }
+  ],
+  "count": 1,
+  "lastUpdated": "2025-11-26T09:44:57.461Z"
+}

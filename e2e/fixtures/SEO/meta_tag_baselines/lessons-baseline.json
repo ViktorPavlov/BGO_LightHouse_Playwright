@@ -1,0 +1,36 @@
+{
+  "metaTags": {
+    "meta_charset": {
+      "charset": "UTF-8"
+    },
+    "meta_viewport": {
+      "name": "viewport",
+      "content": "width=device-width, initial-scale=1.0 viewport-fit=cover user-scalable=no"
+    },
+    "meta_robots": {
+      "name": "robots",
+      "content": "index, follow"
+    },
+    "meta_description": {
+      "name": "description",
+      "content": "Szybko i łatwo ucz się dzięki internetowym lekcjom wideo ze wszystkich przedmiotów dla wszystkich klas — matematyki, nauk ścisłych, biologii, chemii, fizyki."
+    },
+    "meta_og_title": {
+      "property": "og:title",
+      "content": "Internetowe lekcje wideo dla wszystkich klas | Eduboom PL"
+    },
+    "meta_og_description": {
+      "property": "og:description",
+      "content": "Szybko i łatwo ucz się dzięki internetowym lekcjom wideo ze wszystkich przedmiotów dla wszystkich klas — matematyki, nauk ścisłych, biologii, chemii, fizyki."
+    },
+    "meta_og_image": {
+      "property": "og:image",
+      "content": "https://eduboom.pl/og-image.png"
+    },
+    "title": {
+      "content": "Internetowe lekcje wideo dla wszystkich klas | Eduboom PL"
+    }
+  },
+  "metaTagCount": 8,
+  "lastUpdated": "2025-11-26T10:19:08.407Z"
+}

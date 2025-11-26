@@ -1,0 +1,36 @@
+{
+  "metaTags": {
+    "meta_charset": {
+      "charset": "UTF-8"
+    },
+    "meta_viewport": {
+      "name": "viewport",
+      "content": "width=device-width, initial-scale=1.0 viewport-fit=cover user-scalable=no"
+    },
+    "meta_robots": {
+      "name": "robots",
+      "content": "index, follow"
+    },
+    "meta_description": {
+      "name": "description",
+      "content": "Przyroda - lekcje dla klasy 4. Przygotuj się do szkoły dzięki filmom i ćwiczeniom online na Eduboom PL."
+    },
+    "meta_og_title": {
+      "property": "og:title",
+      "content": "Przyroda - lekcje dla klasy 4 | Eduboom PL"
+    },
+    "meta_og_description": {
+      "property": "og:description",
+      "content": "Przyroda - lekcje dla klasy 4. Przygotuj się do szkoły dzięki filmom i ćwiczeniom online na Eduboom PL."
+    },
+    "meta_og_image": {
+      "property": "og:image",
+      "content": "https://eduboom.pl/og-image.png"
+    },
+    "title": {
+      "content": "Przyroda - lekcje dla klasy 4 | Eduboom PL"
+    }
+  },
+  "metaTagCount": 8,
+  "lastUpdated": "2025-11-26T10:18:58.627Z"
+}

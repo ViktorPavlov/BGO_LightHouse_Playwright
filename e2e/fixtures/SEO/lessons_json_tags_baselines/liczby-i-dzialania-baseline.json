@@ -1,0 +1,45 @@
+{
+  "jsonLdData": [
+    {
+      "index": 0,
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "LearningResource",
+        "name": "Rachunki pamięciowe — dodawanie i odejmowanie",
+        "description": ".",
+        "inLanguage": "pl",
+        "isAccessibleForFree": true,
+        "id": "https://eduboom.pl/matematyka/4-primary-school/liczby-i-dzialania/rachunki-pamieciowe-dodawanie-i-odejmowanie",
+        "educationalUse": "instruction",
+        "hasPart": [
+          {
+            "@type": "LearningResource",
+            "name": "Nazwy liczb w dodawaniu i odejmowaniu",
+            "url": "https://eduboom.pl/matematyka/4-primary-school/liczby-i-dzialania/rachunki-pamieciowe-dodawanie-i-odejmowanie/01996b25-35e0-7202-b526-d8676ec9a2ea",
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Łączenie składników sumy",
+            "url": "https://eduboom.pl/matematyka/4-primary-school/liczby-i-dzialania/rachunki-pamieciowe-dodawanie-i-odejmowanie/01996b25-35e3-7083-83d4-d8ae908e2d79",
+            "isAccessibleForFree": false
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Dodawanie liczb dwucyfrowych metodą dziesiątki i jedności",
+            "url": "https://eduboom.pl/matematyka/4-primary-school/liczby-i-dzialania/rachunki-pamieciowe-dodawanie-i-odejmowanie/01996b25-35e8-70e8-a928-9ebdf051d8cb",
+            "isAccessibleForFree": false
+          },
+          {
+            "@type": "LearningResource",
+            "name": "Odejmowanie liczb dwucyfrowych etapami",
+            "url": "https://eduboom.pl/matematyka/4-primary-school/liczby-i-dzialania/rachunki-pamieciowe-dodawanie-i-odejmowanie/01996b25-35ed-72a9-88f6-51f2cdcb3597",
+            "isAccessibleForFree": false
+          }
+        ]
+      }
+    }
+  ],
+  "count": 1,
+  "lastUpdated": "2025-11-26T09:45:02.705Z"
+}
