@@ -1,8 +1,18 @@
-# Playwright-Lighthouse Performance Testing Framework
+# BGO Lighthouse Playwright
 
-This project provides a comprehensive framework for implementing automated performance testing using Playwright and Lighthouse integration. It enables detailed performance analysis, network condition simulation, and historical tracking of web performance metrics.
+Ship faster with confidence: run **Lighthouse Performance + SEO audits** inside **Playwright** tests, enforce **budgets/thresholds** to catch regressions early, and generate **actionable reports** for every run.
 
-## Getting Started
+Built to be reusable as an open-source framework and easy to adapt for internal standards, CI pipelines, and multi-page audit suites.
+
+## Highlights
+
+- **Performance + SEO audits** with Lighthouse in Playwright E2E flows
+- **Budgets / thresholds** to fail builds on regressions
+- **Reports**: Playwright HTML report, JSON output, and custom per-spec HTML reporting
+- **Network condition simulation** for realistic performance testing
+- **Config-driven** URLs, thresholds, and test suites
+
+## Quickstart
 
 ### Prerequisites
 
@@ -19,9 +29,25 @@ This project provides a comprehensive framework for implementing automated perfo
 npm install
 ```
 
+### Configure target URLs (template-based)
+
+This repo keeps environment-specific URLs out of git. Create your local `env.json` from the template:
+
+```bash
+cp test_data/env.template.json test_data/env.json
+```
+
+Then edit `test_data/env.json` to include the pages you want to audit.
+
 ### Running Tests
 
-To run basic performance tests:
+Run all tests:
+
+```bash
+npx playwright test
+```
+
+Run basic performance tests:
 
 ```bash
 npx playwright test e2e/performance.spec.js
@@ -51,11 +77,20 @@ If you're having trouble with the tests timing out or failing, try the simple HT
 npx playwright test e2e/simple-html-test.spec.js
 ```
 
-Or run all tests:
+## Reports
 
-```bash
-npx playwright test
-```
+Generated outputs are written to:
+
+- `playwright-report/` (Playwright HTML report)
+- `lighthouse-reports/` (Lighthouse JSON/HTML and supporting artifacts)
+- `lighthouse-reports/json/test-results.json` (Playwright JSON reporter output)
+
+Suggested additions for a public repo landing page:
+
+- Add screenshots under `docs/` and reference them here
+- Example:
+  - `docs/screenshots/playwright-report.png`
+  - `docs/screenshots/lighthouse-report.png`
 
 ## Project Structure
 
@@ -73,7 +108,7 @@ npx playwright test
 
 ### Configuration Files
 - `test_data/` - Configuration data for tests
-  - `env.json` - Environment configuration with URLs to test
+  - `env.template.json` - Template for environment configuration (copy to `env.json` locally)
   - `treshholds.json` - Performance thresholds and budgets
   - `network_conditions.json` - Network condition configurations
   - `metrics_schema.json` - Schema defining metrics structure and metadata
@@ -83,17 +118,15 @@ npx playwright test
   - `*.html` - HTML reports for visual inspection
   - `*.json` - JSON reports for programmatic analysis
   - `*-history.json` - Historical data for trend analysis
-  - `*-detailed-report.json` - Comprehensive performance analysis
-
-## Documentation
-
-For detailed information on using Playwright-Lighthouse for performance testing, see the [playwright-lighthouse-manual.md](./playwright-lighthouse-manual.md) file.
-
-## Customizing Tests
 
 ### Testing Your Own Website
 
-1. Edit `test_data/env.json` to include your website URLs:
+1. Create `test_data/env.json` locally:
+   ```bash
+   cp test_data/env.template.json test_data/env.json
+   ```
+
+2. Edit `test_data/env.json` to include your website URLs:
    ```json
    {
      "prod_urls": {
@@ -104,19 +137,19 @@ For detailed information on using Playwright-Lighthouse for performance testing,
    }
    ```
 
-2. Adjust performance thresholds in `test_data/treshholds.json`:
+3. Adjust thresholds in `test_data/treshholds.json`:
    ```json
    {
      "performanceBudgets": {
        "first-contentful-paint": 1800,
        "largest-contentful-paint": 2500,
        "performance": 80,
-       ...
+        ...
      }
    }
    ```
 
-3. Customize network conditions in `test_data/network_conditions.json` if needed
+4. Customize network conditions in `test_data/network_conditions.json` if needed
 
 ### Adding New Tests
 
@@ -135,6 +168,34 @@ To create a new test file:
 - **Detailed Reporting**: Generates HTML and JSON reports with recommendations
 - **Robust Error Handling**: Includes retry logic and resource cleanup
 - **Configurable Thresholds**: Customizable performance budgets
+
+## CI usage (example)
+
+Minimal GitHub Actions workflow example (adapt to your needs):
+
+```yaml
+name: Lighthouse Playwright
+on:
+  push:
+  pull_request:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: cp test_data/env.template.json test_data/env.json
+      - run: npx playwright test
+```
+
+## Keywords
+
+Playwright Lighthouse, Lighthouse CI, web performance regression testing, Core Web Vitals (LCP/FCP/CLS/TBT), SEO audit automation, performance budgets.
 
 ## Understanding the Metrics
 
