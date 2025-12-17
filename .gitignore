@@ -14,6 +14,9 @@ lighthouse-reports/
 # Environment files (if they contain sensitive data)
 test_data/env.json
 
+ # Local environment overrides
+ fixed_env.json
+
 # OS generated files
 .DS_Store
 Thumbs.db
