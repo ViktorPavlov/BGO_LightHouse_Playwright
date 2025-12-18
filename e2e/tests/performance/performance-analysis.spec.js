@@ -75,10 +75,11 @@ const performanceAnalysisThresholds = loadConfig(thresholdsPath, 'performance_an
 const urls = loadConfig(envPath, 'prod_urls');
 
 // Convert the URLs object to an array of objects with name and url properties
-if (!urls || typeof urls !== 'object') {
+if (!urls || typeof urls !== 'object' || Array.isArray(urls)) {
   throw new Error(
-    `Invalid or missing URL configuration. Expected an object at property "prod_urls" in ${envPath}. ` +
-    `Create/repair test_data/env.json (you can copy from test_data/env.template.json) and ensure it contains a "prod_urls" object.`
+    `Invalid or missing URL configuration. Expected an object map at property "prod_urls" in ${envPath}. ` +
+    `Example: {"prod_urls": {"homepage": "https://example.com/", "about": "https://example.com/about"}}. ` +
+    `Create/repair test_data/env.json (you can copy from test_data/env.template.json).`
   );
 }
 
