@@ -57,7 +57,7 @@ try {
 const reportsDirectory = createReportsDirectory('seo', 'json-ld');
 
 // Path to baseline files
-const baselinePath = path.join(__dirname, '..', '..', 'fixtures', 'seo', 'lessons_json_tags_baselines');
+const baselinePath = path.join(__dirname, '..', '..', 'fixtures', 'seo', 'seo_json_tags_baselines');
 
 // Create baseline directory if it doesn't exist
 ensureBaselineDirectory(baselinePath);

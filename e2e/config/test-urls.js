@@ -12,23 +12,36 @@ const { loadConfig } = require('../../utils');
 const envPath = path.join(__dirname, '..', '..', 'test_data', 'env.json');
 const urls = loadConfig(envPath, 'prod_urls');
 
+if (!urls || typeof urls !== 'object') {
+  throw new Error(
+    `Invalid or missing URL configuration. Expected an object at property "prod_urls" in ${envPath}. ` +
+    `Create/repair test_data/env.json (you can copy from test_data/env.template.json) and ensure it contains a "prod_urls" object.`
+  );
+}
+
 // Group URLs by type for easier test organization
-const urlGroups = {
-  main: {
-    homepage: urls.homepage,
-    about: urls.about,
-    contact: urls.contact
-  },
-  content: {
-    'primary-school': urls['primary-school'],
-    lessons: urls.lessons,
-    biologia: urls.biologia,
-    'biologia-lesson': urls['biologia-lesson']
-  },
-  process: {
-    'onboarding-process': urls['onboarding-process']
-  }
+const groupDefs = {
+  main: ['homepage', 'about', 'contact'],
+    content: ['....', '...', '...', '.....-...'],
+    process: ['onboarding-process']
 };
+
+const buildUrlGroups = (source, defs, { strict = false } = {}) =>
+  Object.fromEntries(
+    Object.entries(defs).map(([groupName, keys]) => [
+      groupName,
+      Object.fromEntries(
+        keys.map((key) => {
+          if (strict && source[key] == null) {
+            throw new Error(`Missing URL for key: ${key}`);
+          }
+          return [key, source[key]];
+        })
+      )
+    ])
+  );
+
+const urlGroups = buildUrlGroups(urls, groupDefs);
 
 // Convert the URLs object to an array of objects with name and url properties
 const pagesToTest = Object.entries(urls).map(([name, url]) => ({ name, url }));

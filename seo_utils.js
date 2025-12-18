@@ -34,7 +34,7 @@ const path = require('path');
 /**
  * Compare extracted data with baseline
  * @param {Array|Object} extractedData - Extracted data (JSON-LD data or meta tags)
- * @param {string} pageName - Name of the page/lesson
+ * @param {string} pageName - Name of the page/example
  * @param {string} baselinePath - Path to baseline directory
  * @param {string} baselineType - Type of baseline ('json-ld' or 'meta-tags')
  * @returns {Object} - Comparison results
@@ -278,7 +278,7 @@ function findFieldDifferences(baseline, current, path = '') {
 /**
  * Update baseline file with current data
  * @param {Array|Object} extractedData - Current data (JSON-LD data or meta tags)
- * @param {string} pageName - Name of the page/lesson
+ * @param {string} pageName - Name of the page/example
  * @param {string} baselinePath - Path to baseline directory
  * @param {string} baselineType - Type of baseline ('json-ld' or 'meta-tags')
  */

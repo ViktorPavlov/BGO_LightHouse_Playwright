@@ -34,7 +34,7 @@ coverage/
 
 # SEO baselines
 fixtures/seo/meta_tag_baselines/*.json
-fixtures/seo/lessons_json_tags_baselines/*.json
+fixtures/seo/seo_json_tags_baselines/*.json
 
 # Dependency directories
 jspm_packages/

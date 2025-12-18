@@ -67,6 +67,13 @@ const performanceBudgets = loadConfig(thresholdsPath, 'performanceBudgets');
 const urls = loadConfig(envPath, 'prod_urls');
 
 // Run tests for each URL in the env.json file
+if (!urls || typeof urls !== 'object') {
+  throw new Error(
+    `Invalid or missing URL configuration. Expected an object at property "prod_urls" in ${envPath}. ` +
+    `Create/repair test_data/env.json (you can copy from test_data/env.template.json) and ensure it contains a "prod_urls" object.`
+  );
+}
+
 for (const [pageName, pageUrl] of Object.entries(urls)) {
   test(`detailed performance audit for ${pageName}`, async () => {
   // Increase timeout for Lighthouse tests (5 minutes)
